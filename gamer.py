@@ -37,11 +37,6 @@ def ocr(img_file):
     # Creating a copy of image
     im2 = img.copy()
 
-    # A text file is created and flushed
-    file = open("recognized.txt", "w+")
-    file.write("")
-    file.close()
-
     # Looping through the identified contours
     # Then rectangular part is cropped and passed on
     # to pytesseract for extracting text from it
@@ -55,12 +50,7 @@ def ocr(img_file):
         # Cropping the text block for giving input to OCR
         cropped = im2[y:y + h, x:x + w]
         
-        # Open the file in append mode
-        file = open("recognized.txt", "a")
-        
         # Apply OCR on the cropped image
         text = pytesseract.image_to_string(cropped, lang='jpn')
         
         return text
-
-print(ocr('test.jpg'))
