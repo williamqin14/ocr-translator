@@ -1,8 +1,9 @@
 import ollama
+import gamer
 response = ollama.chat(model='llama2', messages=[
   {
     'role': 'user',
-    'content': 'Hello there! How are you?',
+    'content': gamer.ocr('test.jpg'),
   },
 ])
 print(response['message']['content'])
